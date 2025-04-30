@@ -1,0 +1,5 @@
+authtoken: <your-ngrok-authtoken>
+tunnels:
+  app-tunnel:
+    proto: http
+    addr: python-app-1:5000  # change based on which service to expose

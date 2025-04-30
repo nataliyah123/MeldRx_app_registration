@@ -1,8 +1,0 @@
-fastapi
-uvicorn
-pydantic
-joblib
-requests
-rdkit
-numpy
-bs4

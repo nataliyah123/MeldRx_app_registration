@@ -16,6 +16,7 @@ export default function Page() {
         scope: launchData.scope,
         redirectUri: launchData.redirectUrl,
         iss: fhirUrl,
+        completeInTarget: true,
     });
   }, [FHIR]);
 

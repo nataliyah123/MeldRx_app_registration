@@ -1,0 +1,33 @@
+services:
+  meldrx-app:
+    build: ./meldrx-template-app-patient-viewer-nextjs
+    ports:
+      - "3000:3000"
+    environment:
+      NEXT_PUBLIC_APP_BASE_URL : "http://localhost:3000"
+      NEXT_PUBLIC_MELDRX_CLIENT_ID : "60d90ffa05264d5eb4cd75c40365fa48"
+      NEXT_PUBLIC_MELDRX_WORKSPACE_URL : "https://app.meldrx.com/api/fhir/2f98145d-9ae9-464f-8369-333f7ea3680e"  
+    
+  github-python-api:
+    build: ./github-python-api
+    ports:
+      - "8000:8000"
+
+  nodejs-api:
+    build: ./nodejs-api
+    ports:
+      - "3001:3001"
+
+  cds-hook:
+    build: ./cds-hook
+    ports:
+      - "3003:3003"
+
+  ngrok:
+    image: ngrok/ngrok:latest
+    command: http cds-hook:3003
+    environment:
+      - NGROK_AUTHTOKEN=your-ngrok-token
+    ports:
+    - "4040:4040"
+
